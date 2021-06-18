@@ -239,5 +239,17 @@ namespace Roulette.Controllers
             }
             return list;
         }
+
+        private List<RouletteData> ListRoulettes()
+        {
+            List<RouletteData> list;
+            var exist = _redis.TryGetValue(cacheKey, out list);
+            if (list == null)
+            {
+                list = new List<RouletteData>();
+            }
+            return list;
+        }
+
     }
 }
